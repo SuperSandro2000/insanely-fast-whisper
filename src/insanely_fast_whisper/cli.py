@@ -1,5 +1,6 @@
 import json
 import argparse
+import os
 from transformers import pipeline
 from rich.progress import Progress, TimeElapsedColumn, BarColumn, TextColumn
 import torch
@@ -75,7 +76,7 @@ parser.add_argument(
 parser.add_argument(
     "--hf-token",
     required=False,
-    default="no_token",
+    default=os.environ.get('HF_TOKEN', 'no_token'),
     type=str,
     help="Provide a hf.co/settings/token for Pyannote.audio to diarise the audio clips",
 )
