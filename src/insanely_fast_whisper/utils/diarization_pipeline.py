@@ -8,8 +8,8 @@ from .diarize import post_process_segments_and_transcripts, diarize_audio, \
 
 def diarize(args, outputs):
     diarization_pipeline = Pipeline.from_pretrained(
-        checkpoint_path=args.diarization_model,
-        use_auth_token=args.hf_token,
+        args.diarization_model,
+        token=args.hf_token,
     )
     diarization_pipeline.to(
         torch.device("mps" if args.device_id == "mps" else f"cuda:{args.device_id}")
