@@ -133,6 +133,7 @@ def main():
         torch_dtype=torch.float16,
         device="mps" if args.device_id == "mps" else f"cuda:{args.device_id}",
         model_kwargs={"attn_implementation": "flash_attention_2"} if args.flash else {"attn_implementation": "sdpa"},
+        token=args.hf_token,
     )
 
     if args.device_id == "mps":
