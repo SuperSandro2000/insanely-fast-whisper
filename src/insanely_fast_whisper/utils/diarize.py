@@ -67,7 +67,7 @@ def diarize_audio(diarizer_inputs, diarization_pipeline, num_speakers, min_speak
     )
 
     segments = []
-    for segment, track, label in diarization.itertracks(yield_label=True):
+    for segment, track, label in diarization.speaker_diarization.itertracks(yield_label=True):
         segments.append(
             {
                 "segment": {"start": segment.start, "end": segment.end},
